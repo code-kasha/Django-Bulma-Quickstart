@@ -13,40 +13,13 @@ def get_filename_ext(filepath):
     return name, ext
 
 
-def get_avatar_upload_path(instance, filename):
+def get_upload_path(instance, filename, destination="avatars"):
     """Renames a file/image on upload"""
     new_filename = str(random.randint(1, 33524642542))
     name, ext = get_filename_ext(filename)
     final_filename = f"{new_filename[:5]}-{name[:5]}{ext}"
 
-    return f"user/avatar/{final_filename}"
-
-
-def ckeditor_upload_path(instance, filename):
-    """Renames a file/image on upload"""
-    new_filename = str(random.randint(1, 33524642542))
-    name, ext = get_filename_ext(filename)
-    final_filename = f"{new_filename[:5]}-{name[:5]}{ext}"
-
-    return f"ckeditor_uploads/new/{final_filename}"
-
-
-def audio_upload_path(instance, filename):
-    """Renames a file/image on upload"""
-    new_filename = str(random.randint(1, 33524642542))
-    name, ext = get_filename_ext(filename)
-    final_filename = f"{new_filename[:5]}-{name[:5]}{ext}"
-
-    return f"audio/{final_filename}"
-
-
-def user_audio_upload_path(instance, filename):
-    """Renames a file/image on upload"""
-    new_filename = str(random.randint(1, 33524642542))
-    name, ext = get_filename_ext(filename)
-    final_filename = f"{new_filename[:5]}-{name[:5]}{ext}"
-
-    return f"user/uploads/{final_filename}"
+    return f"{destination}/{final_filename}"
 
 
 def random_string_generator(size=6, chars=CHARS):
