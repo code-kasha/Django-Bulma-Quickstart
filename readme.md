@@ -24,6 +24,20 @@ Change your default email, and account activation configuration.
 
 **Do not try to sign up without update to accounts.py in settings, it is bound to fail, use createsuperuser**
 
+**[Errno -2] Name or service not known : This error will be thrown if your email settings are not proper. fix them and restart the server to solve**
+
+**Since we send an email verification, they absolutely need to have an email and a backend to handle it, tinker around accounts.py and docs to learn more**
+
+**Inside the admin panel, change the site name and hosts!**
+
+# Docs :
+
+    - Django : https://docs.djangoproject.com/en/3.1/
+    - Django Allauth : https://django-allauth.readthedocs.io/en/latest/
+    - Django Ckeditor : https://pypi.org/project/django-ckeditor/
+    - Django Widget Tweaks : https://pypi.org/project/django-widget-tweaks/
+    - Pillow : https://pillow.readthedocs.io/en/stable/
+
 # Features:
 
     - Clean Looking Bulma Frontend! :D
