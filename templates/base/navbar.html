@@ -1,0 +1,68 @@
+{% url 'account_login' as login_url %}
+{% url 'account_logout' as logout_url %}
+{% url 'account_signup' as signup_url %}
+
+{% url 'account_change_password' as password_reset_url %}
+{% url 'account_email' as account_email_url %}
+
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <strong>Mysite</strong>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-main">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbar-main" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item">
+                Start
+            </a>
+        </div>
+        <div class="navbar-end">
+            {% if user.is_authenticated %}
+            <div class="navbar-item is-hoverable">
+                <a class="navbar-link">
+                    {{user}}'s Account
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="{{account_email_url}}">
+                        Change Email
+                    </a>
+                    <a class="navbar-item" href="{{password_reset_url}}">
+                        Change Password
+                    </a>
+                    <a class="navbar-item">
+                        Change Details
+                    </a>
+                    <a class="navbar-item">
+                        Change Avatar
+                    </a>
+                    <hr class="navbar-divider">
+                    <a class="navbar-item" href="{{logout_url}}">
+                        Logout
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary" href="{{signup_url}}">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light" href="{{login_url}}">
+                        Log in
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</nav>

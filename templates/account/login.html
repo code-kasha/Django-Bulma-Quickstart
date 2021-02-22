@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load account socialaccount %}
+
+{% block title %} {% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h1 class="title"><strong>Log in</strong></h1>
+    <p></p>
+    <p class="subtitle">{% blocktrans %}If you have not created an account yet, then please
+        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <form class="login" method="POST" action="{% url 'account_login' %}" class="form">
+        <div class="container">
+            {% csrf_token %}
+            <div class="field">
+                <div class="control">
+                    {{form.login|add_class:"input field"}}
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    {{form.password|add_class:"input field"}}
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <strong> Remember Me </strong> {{form.remember|add_class:"field"}}
+                </div>
+            </div>
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <a class="button is-secondary secondaryAction"
+                href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            <button class="button is-primary primaryAction" type="submit">{% trans "Sign In" %}</button>
+        </div>
+    </form>
+
+</div>
+{% endblock content %}

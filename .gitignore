@@ -1,0 +1,6 @@
+env
+.secrets
+media
+*.pyc
+__pycache__
+*.sqlite3

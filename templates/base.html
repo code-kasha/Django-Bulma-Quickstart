@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        {% include 'base/header.html' %}
+        <title>{% block title %}{% endblock %} | Starter</title>
+        {% include 'base/styles.html' %}
+        {% block styles %}{% endblock %}
+    </head>
+
+    <body>
+        {% include 'base/navbar.html' %}
+        {% if messages %}
+        <section class="section">
+            <div class="notification">
+                {% for message in messages %}
+                <h4>{{message}}</h4>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+        <div class="wrapper">
+            <section class="section">
+                {% block content %}{% endblock content %}
+            </section>
+        </div>
+        {% include 'base/footer.html' %}
+        {% include 'base/scripts.html' %}
+        {% block scripts %}{% endblock %}
+    </body>
+
+</html>
